@@ -1,0 +1,345 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/afs/uncc.edu/usr/a/aspiers/linux/Desktop/RISC_VHDL
+T_opt
+VhZeNBl3W56`JU[EFZ6S]<0
+04 7 8 work fifo_tb behavior 1
+=1-00219b8a77d3-560b275b-b9a2c-735e
+Z1 o-quiet -auto_acc_if_foreign -work work
+n@_opt
+Z2 OE;O;10.1b;51
+Z3 d/afs/uncc.edu/usr/a/aspiers/linux/Desktop/RISC_VHDL
+T_opt1
+V_A1O:>Zc]zd6El=WJ0`M@0
+Z4 04 9 5 work router_tb behav 1
+=1-782bcb20a44c-560ef2ab-a4ad7-6077
+R1
+n@_opt1
+R2
+R3
+T_opt2
+V;Ha31A5aW:L7_WPoiU>hb3
+R4
+=8-d4ae52796d87-560ff6a4-3e4b3-208a
+R1
+n@_opt2
+R2
+Efifo
+Z5 w1443571523
+Z6 DPx4 ieee 15 std_logic_arith 0 22 4`Y?g_lkdn;7UL9IiJck01
+Z7 DPx4 ieee 18 std_logic_unsigned 0 22 RYmj;=TK`k=k>D@Cz`zoB3
+Z8 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z9 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z10 d/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO
+Z11 8/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/FIFO.vhd
+Z12 F/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/FIFO.vhd
+l0
+L5
+VYfQLz^`?V^d:4ZBY:]bdP3
+Z13 OE;C;10.1b;51
+32
+Z14 !s108 1443884685.781437
+Z15 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/FIFO.vhd|
+Z16 !s107 /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/FIFO.vhd|
+Z17 o-work work -2002 -explicit
+Z18 tExplicit 1
+!s100 N_nmn`W[_n5TW2XWb1Ic31
+!i10b 1
+Atop_hier
+R6
+R7
+R8
+R9
+DEx4 work 4 fifo 0 22 YfQLz^`?V^d:4ZBY:]bdP3
+l31
+L14
+Vh2Y7e[=Ae^a;G[<NNdLS23
+R13
+32
+R14
+R15
+R16
+R17
+R18
+!s100 _z?I9CF4=lB`D@ZY]geS_3
+!i10b 1
+Efifo_logic
+Z19 w1443188081
+R6
+R7
+R8
+R9
+R10
+Z20 8/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/FIFO_LOGIC.vhd
+Z21 F/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/FIFO_LOGIC.vhd
+l0
+L5
+VWmAV672;i0G5cXlc<QS3o0
+R13
+32
+Z22 !s108 1443884685.981889
+Z23 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/FIFO_LOGIC.vhd|
+Z24 !s107 /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/FIFO_LOGIC.vhd|
+R17
+R18
+!s100 X]K8]XmjmA4GLSLVA6U?a1
+!i10b 1
+Artl
+R6
+R7
+R8
+R9
+DEx4 work 10 fifo_logic 0 22 WmAV672;i0G5cXlc<QS3o0
+l15
+L12
+V?PD>8]99j8Jo6lFMn^egN0
+R13
+32
+R22
+R23
+R24
+R17
+R18
+!s100 df]:CG4EWa3OGfTbd7`Og3
+!i10b 1
+Efifo_logic_modified
+Z25 w1443571442
+R6
+R7
+R8
+R9
+R10
+Z26 8/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/FIFO_LOGIC_MODIFIED.vhd
+Z27 F/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/FIFO_LOGIC_MODIFIED.vhd
+l0
+L5
+V;J_07j<1<[LY7=?cSWGdN1
+R13
+32
+Z28 !s108 1443884686.028683
+Z29 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/FIFO_LOGIC_MODIFIED.vhd|
+Z30 !s107 /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/FIFO_LOGIC_MODIFIED.vhd|
+R17
+R18
+!s100 eQ_ho;c]3Cc5^fIfRC7A_2
+!i10b 1
+Artl
+R6
+R7
+R8
+R9
+DEx4 work 19 fifo_logic_modified 0 22 ;J_07j<1<[LY7=?cSWGdN1
+l16
+L13
+VfeiVU`W[`_[99]]MeESUU1
+R13
+32
+R28
+R29
+R30
+R17
+R18
+!s100 4Y]W?[KofLoCgJGe`bY3C1
+!i10b 1
+Efifo_tb
+Z31 w1443188462
+Z32 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+R8
+R9
+R10
+Z33 8/afs/uncc.edu/usr/a/aspiers/linux/Desktop/RISC_VHDL/FIFO_TB.vhd
+Z34 F/afs/uncc.edu/usr/a/aspiers/linux/Desktop/RISC_VHDL/FIFO_TB.vhd
+l0
+L5
+VDX=[BQ:ScM7zZgPM811zL3
+R13
+32
+Z35 !s108 1443884686.075884
+Z36 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|/afs/uncc.edu/usr/a/aspiers/linux/Desktop/RISC_VHDL/FIFO_TB.vhd|
+Z37 !s107 /afs/uncc.edu/usr/a/aspiers/linux/Desktop/RISC_VHDL/FIFO_TB.vhd|
+R17
+R18
+!s100 ?FI@UBKd>Yb3h=;IUzZ_I2
+!i10b 1
+Abehavior
+R32
+R8
+R9
+DEx4 work 7 fifo_tb 0 22 DX=[BQ:ScM7zZgPM811zL3
+l22
+L8
+VBXbXl?n`5D9S_jToRG1D?3
+R13
+32
+R35
+R36
+R37
+R17
+R18
+!s100 lN8Zjl1ROOYAME;7<YoOk2
+!i10b 1
+Ppkg
+R6
+R7
+R8
+R9
+Z38 w1443822069
+R10
+Z39 8/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/ROUTER_PACKAGE.vhd
+Z40 F/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/ROUTER_PACKAGE.vhd
+l0
+L5
+VK9Mf?YQF;ZPQkc[]ZaFP;3
+R13
+32
+Z41 !s108 1443884686.175623
+Z42 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/ROUTER_PACKAGE.vhd|
+Z43 !s107 /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/ROUTER_PACKAGE.vhd|
+R17
+R18
+!s100 l4hM7Bl0fzL`AnfNEV9451
+!i10b 1
+Bbody
+Z44 DPx4 work 3 pkg 0 22 K9Mf?YQF;ZPQkc[]ZaFP;3
+R6
+R7
+R8
+R9
+l0
+L13
+Vak^^J[iQ7;@2D9d9SVn9K0
+R13
+32
+R41
+R42
+R43
+R17
+R18
+nbody
+!s100 S];BMFFWgN@zZH7_I_2ao3
+!i10b 1
+Eram
+Z45 w1443150165
+R32
+R8
+R9
+R10
+Z46 8/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/RAM.vhd
+Z47 F/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/RAM.vhd
+l0
+L6
+V?8Oo5cD7A0Hf<akGGHjhE2
+R13
+32
+Z48 !s108 1443884685.934167
+Z49 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/RAM.vhd|
+Z50 !s107 /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/RAM.vhd|
+R17
+R18
+!s100 8d[@53R3C_@^4ED9bmGjz3
+!i10b 1
+Arambehavior
+R32
+R8
+R9
+DEx4 work 3 ram 0 22 ?8Oo5cD7A0Hf<akGGHjhE2
+l19
+L15
+V1HK<eAeDeGaEg?m4dHa?`0
+R13
+32
+R48
+R49
+R50
+R17
+R18
+!s100 c18=In`oM=c^dU[l31ASE0
+!i10b 1
+Erouter
+Z51 w1443884670
+R44
+R32
+R6
+R7
+R8
+R9
+R10
+Z52 8/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/ROUTER.vhd
+Z53 F/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/ROUTER.vhd
+l0
+L7
+VeE6Jje;giC[_W2ISBJEYY0
+R13
+32
+Z54 !s108 1443884686.123387
+Z55 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/ROUTER.vhd|
+Z56 !s107 /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/ROUTER.vhd|
+R17
+R18
+!s100 [_6OhXGG>W<nAE0Tchjcb1
+!i10b 1
+Abehav
+R44
+R32
+R6
+R7
+R8
+R9
+DEx4 work 6 router 0 22 eE6Jje;giC[_W2ISBJEYY0
+l42
+L16
+V@m0Bc9OWS<bibFD_[eHf30
+R13
+32
+R54
+R55
+R56
+R17
+R18
+!s100 ;XQM:Gmg7J=3AY[3HF4@b0
+!i10b 1
+Erouter_tb
+Z57 w1443886743
+R44
+R32
+R6
+R7
+R8
+R9
+R10
+Z58 8/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/ROUTER_TB.vhd
+Z59 F/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/ROUTER_TB.vhd
+l0
+L7
+VN<iz>EZO>]XdESN7^3FKo0
+R13
+32
+Z60 !s108 1443886743.507399
+Z61 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|/afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/ROUTER_TB.vhd|
+Z62 !s107 /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/ROUTER_TB.vhd|
+R17
+R18
+!s100 Ri4VLOElDQodlBLSb6::K3
+!i10b 1
+Abehav
+R44
+R32
+R6
+R7
+R8
+R9
+DEx4 work 9 router_tb 0 22 N<iz>EZO>]XdESN7^3FKo0
+l25
+L10
+V2H`VfNPnf`9QI2^0Rk?W:3
+R13
+32
+R60
+R61
+R62
+R17
+R18
+!s100 W@ZC<WK5O?]DTFQafQRl@2
+!i10b 1
