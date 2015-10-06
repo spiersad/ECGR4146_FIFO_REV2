@@ -29,6 +29,7 @@ architecture behav of ROUTER_TB is
 begin
   uut: ROUTER port map(CLK => CLK, RESET => RESET, INDIN => INDIN, OUTDOUT => OUTDOUT, INPUSH => INPUSH, OUTPOP => OUTPOP);
   rng: random port map(Clk => Clk, random_number => RN);
+    
   clk_process: process
     begin
       clk <= '0';
@@ -45,6 +46,8 @@ begin
         INPUSH <= (others => '0');
         INDIN <= (others => x"0000000000000000");
         OUTPOP <= (others => '0');
+        dataInState := state0;
+        dataInNState := state0;
       else
         dataInState := dataInNState;
       end if;

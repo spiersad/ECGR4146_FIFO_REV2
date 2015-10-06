@@ -46,6 +46,8 @@ begin
         INPUSH <= (others => '0');
         INDIN <= (others => x"0000000000000000");
         OUTPOP <= (others => '0');
+        dataInState := state0;
+        dataInNState := state0;
       else
         dataInState := dataInNState;
       end if;
@@ -75,7 +77,7 @@ begin
   process
     begin
       reset <= '1';
-      wait for 1 ns;
+      wait for 2 ns;
       reset <= '0';
       wait;
   end process;

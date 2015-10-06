@@ -19,16 +19,16 @@ Model Technology ModelSim SE vcom 10.1b Compiler 2012.04 Apr 26 2012
 -- Compiling entity FIFO_TB
 -- Compiling architecture behavior of FIFO_TB
 
-} {} {}} /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/RAM.vhd {1 {vcom -work work -2002 -explicit -vopt /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/RAM.vhd
+} {} {}} /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/ROUTER_PACKAGE.vhd {1 {vcom -work work -2002 -explicit -vopt /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/ROUTER_PACKAGE.vhd
 Model Technology ModelSim SE vcom 10.1b Compiler 2012.04 Apr 26 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Loading package std_logic_arith
 -- Loading package STD_LOGIC_UNSIGNED
--- Loading package NUMERIC_STD
--- Compiling entity RAM
--- Compiling architecture RAMBEHAVIOR of RAM
+-- Compiling package pkg
+-- Compiling package body pkg
+-- Loading package pkg
 
 } {} {}} /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/FIFO.vhd {1 {vcom -work work -2002 -explicit -vopt /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/FIFO.vhd
 Model Technology ModelSim SE vcom 10.1b Compiler 2012.04 Apr 26 2012
@@ -40,16 +40,16 @@ Model Technology ModelSim SE vcom 10.1b Compiler 2012.04 Apr 26 2012
 -- Compiling entity FIFO
 -- Compiling architecture TOP_HIER of FIFO
 
-} {} {}} /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/ROUTER_PACKAGE.vhd {1 {vcom -work work -2002 -explicit -vopt /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/ROUTER_PACKAGE.vhd
+} {} {}} /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/RAM.vhd {1 {vcom -work work -2002 -explicit -vopt /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/RAM.vhd
 Model Technology ModelSim SE vcom 10.1b Compiler 2012.04 Apr 26 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Loading package std_logic_arith
 -- Loading package STD_LOGIC_UNSIGNED
--- Compiling package pkg
--- Compiling package body pkg
--- Loading package pkg
+-- Loading package NUMERIC_STD
+-- Compiling entity RAM
+-- Compiling architecture RAMBEHAVIOR of RAM
 
 } {} {}} /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/ROUTER.vhd {1 {vcom -work work -2002 -explicit -vopt /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/ROUTER.vhd
 Model Technology ModelSim SE vcom 10.1b Compiler 2012.04 Apr 26 2012
@@ -63,15 +63,15 @@ Model Technology ModelSim SE vcom 10.1b Compiler 2012.04 Apr 26 2012
 -- Compiling entity ROUTER
 -- Compiling architecture behav of router
 
-} {} {}} /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/RANDOM.vhd {1 {vcom -work work -2002 -explicit -vopt /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/RANDOM.vhd
+} {} {}} /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/FIFO_LOGIC_MODIFIED.vhd {1 {vcom -work work -2002 -explicit -vopt /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/FIFO_LOGIC_MODIFIED.vhd
 Model Technology ModelSim SE vcom 10.1b Compiler 2012.04 Apr 26 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Loading package MATH_REAL
--- Loading package NUMERIC_STD
--- Compiling entity random
--- Compiling architecture behave of random
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity FIFO_LOGIC_MODIFIED
+-- Compiling architecture RTL of FIFO_LOGIC_MODIFIED
 
 } {} {}} /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/FIFO_LOGIC.vhd {1 {vcom -work work -2002 -explicit -vopt /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/FIFO_LOGIC.vhd
 Model Technology ModelSim SE vcom 10.1b Compiler 2012.04 Apr 26 2012
@@ -83,14 +83,14 @@ Model Technology ModelSim SE vcom 10.1b Compiler 2012.04 Apr 26 2012
 -- Compiling entity FIFO_LOGIC
 -- Compiling architecture RTL of FIFO_LOGIC
 
-} {} {}} /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/FIFO_LOGIC_MODIFIED.vhd {1 {vcom -work work -2002 -explicit -vopt /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/FIFO_LOGIC_MODIFIED.vhd
+} {} {}} /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/RANDOM.vhd {1 {vcom -work work -2002 -explicit -vopt /afs/uncc.edu/usr/a/aspiers/linux/Desktop/FIFO/RANDOM.vhd
 Model Technology ModelSim SE vcom 10.1b Compiler 2012.04 Apr 26 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Loading package std_logic_arith
--- Loading package STD_LOGIC_UNSIGNED
--- Compiling entity FIFO_LOGIC_MODIFIED
--- Compiling architecture RTL of FIFO_LOGIC_MODIFIED
+-- Loading package MATH_REAL
+-- Loading package NUMERIC_STD
+-- Compiling entity random
+-- Compiling architecture behave of random
 
 } {} {}}
