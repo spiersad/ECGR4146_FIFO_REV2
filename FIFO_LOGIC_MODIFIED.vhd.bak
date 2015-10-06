@@ -19,6 +19,7 @@ architecture RTL of FIFO_LOGIC_MODIFIED is
         if (INIT = '1') then -- initialization --
           WPTR <= (others => '0');
           RPTR <= (others => '0');
+          WE <= '0';
           LASTOP <= '0';
           BUFF <= "0000";
         elsif (POP = '1' and empty = '0') then -- pop --
@@ -80,7 +81,7 @@ COMB: process (PUSH, POP, WPTR, RPTR, LASTOP, FULL, EMPTY)
       else
         NOPOP <= '1'; -- no red condition --
       end if;
-    else -- push and pop at same time \u2013
+    else -- push and pop at same time
       if (empty = '0') then -- valid pop --
         ADD <= RPTR;
         WE <= '0';

@@ -18,18 +18,19 @@ architecture behav of router is
   signal current_state, next_state : state := state0;
   signal RTABLE: DataArray := (x"aaaa000000000000", x"5555000100000000", x"5555001000000000", x"0000001100000000");
   signal OUTDIN, INDOUT: DataArray;
-  signal INPOP, OUTPUSH, INNOPOP, OUTNOPUSH, INWE, OUTWE: ControlArray;
+  signal INPOP, OUTPUSH, INNOPOP, INNOPUSH, OUTNOPUSH, OUTNOPOP, INWE, OUTWE: ControlArray;
   signal INADDR, OUTADDR: AddressArray;
   signal OUTBUFF: BufferArray;
-  signal TMP, TMPRTABLE: std_logic_vector(63 downto 0);
+  signal TMP: std_logic_vector(63 downto 0);
   signal INIT: std_logic;
   
   component FIFO_LOGIC_MODIFIED is
     generic (N: integer); -- number of address bits
     port (CLK, PUSH, POP, INIT: in std_logic;
           BUFF: out std_logic_vector(3 downto 0);
+          we: out std_logic;
           ADD: out std_logic_vector(N-1 downto 0);
-          FULL, EMPTY, WE, NOPUSH, NOPOP: out std_logic);
+          FULL, EMPTY, NOPUSH, NOPOP: buffer std_logic);
   end component FIFO_LOGIC_MODIFIED;
   component RAM is
     generic (K, W: integer); -- number of address and data bits
@@ -41,30 +42,18 @@ architecture behav of router is
   
 begin
   
-  OUTFIFO_GEN:
-  for I in 3 downto 0 generate
-    OUTFIFO: FIFO_LOGIC_MODIFIED generic map (N => N)
-      port map(CLK => CLK, PUSH => OUTPUSH(I), POP => OUTPOP(I), INIT => INIT,
-               NOPUSH => OUTNOPUSH(I), ADD => OUTADDR(I) , BUFF => OUTBUFF(I), WE => OUTWE(I));
-  end generate;
-  
-  INFIFO_GEN:
-  for I in 3 downto 0 generate
-    INFIFO: FIFO_LOGIC_MODIFIED generic map (N => N)
-      port map(CLK => CLK, PUSH => INPUSH(I), POP => INPOP(I), INIT => INIT,
-               NOPOP => INNOPOP(I), ADD => INADDR(I), WE => INWE(I));
-  end generate;
-  
-  OUTRAM_GEN:
+  PORT_MAP_GEN:
   for I in 3 downto 0 generate
     OUTRAM: RAM generic map (W => N, K => M)
-      port map (DIN => OUTDIN(I), ADDR => OUTADDR(I), WR => OUTWE(I), DOUT => OUTDOUT(I));
-  end generate;
-  
-  INRAM_GEN:
-  for I in 3 downto 0 generate
+      port map (DIN => OUTDIN(I), ADDR => OUTADDR(I), DOUT => OUTDOUT(I), WR => OUTWE(I));
     INRAM: RAM generic map (W => N, K => M)
-      port map (DIN => INDIN(I), ADDR => INADDR(I), WR => INWE(I), DOUT => INDOUT(I));
+      port map (DIN => INDIN(I), ADDR => INADDR(I), DOUT => INDOUT(I), WR => INWE(I));
+    OUTFIFO: FIFO_LOGIC_MODIFIED generic map (N => N)
+      port map(CLK => CLK, PUSH => OUTPUSH(I), POP => OUTPOP(I), INIT => INIT, NOPOP => OUTNOPOP(I),
+               NOPUSH => OUTNOPUSH(I), ADD => OUTADDR(I) , BUFF => OUTBUFF(I), WE => OUTWE(I));
+    INFIFO: FIFO_LOGIC_MODIFIED generic map (N => N)
+      port map(CLK => CLK, PUSH => INPUSH(I), POP => INPOP(I), INIT => INIT,
+               NOPUSH => INNOPUSH(I), NOPOP => INNOPOP(I), ADD => INADDR(I), WE => INWE(I));
   end generate;
   
   RTABLE(0)(19 downto 16) <= OUTBUFF(0);
@@ -72,7 +61,7 @@ begin
   RTABLE(2)(19 downto 16) <= OUTBUFF(2);
   RTABLE(3)(19 downto 16) <= OUTBUFF(3);
   
-  process(Clk, RESET)
+  main: process(Clk, RESET)
     variable i : std_logic_vector(1 downto 0);
     variable j : integer;
       begin
@@ -82,6 +71,8 @@ begin
           next_state <= state0;
           i := "00";
           INIT <= '1';
+          TMP <= x"0000000000000000";
+          OUTDIN <= (others => x"0000000000000000");
           OUTPUSH <= (others => '0');
           INPOP <= (others => '0');
         else
@@ -123,15 +114,16 @@ begin
               if (RTABLE(j-1)(63 downto 48) = RTABLE(j)(63 downto 48)) and
                   RTABLE(j-1)(31 downto 16) < RTABLE(j)(31 downto 16) then
                 OUTDIN(j-1) <= TMP;
-                OUTPUSH(j-1) <= '1';
+                j := j-1;
               else
                 OUTDIN(j) <= TMP;
-                OUTPUSH(j) <= '1';
               end if;
             else
-              OUTDIN(0) <= TMP;
-              OUTPUSH(0) <= '1';
+              OUTDIN(j) <= TMP;
             end if;
+            next_state <= state5;
+          when state5 =>
+            OUTPUSH(J) <= '1';
             next_state <= state3;
           when others =>
             next_state <= state3;

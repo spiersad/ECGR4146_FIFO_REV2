@@ -8,6 +8,10 @@ entity ROUTER_TB is
 end ROUTER_TB;
 
 architecture behav of ROUTER_TB is
+  component random
+      port (clk:in std_logic;
+            random_number: out std_logic_vector(63 downto 0));
+    end component;
   component ROUTER
       generic (N: integer := 8; -- number of address bits for 2**N address locations
                M: integer := 64); -- number of data bits to/from FIFO
@@ -19,12 +23,12 @@ architecture behav of ROUTER_TB is
   constant clk_period: time := 1 ns;
   constant M: integer := 64;
   signal CLK,RESET: std_logic;
-  signal INDIN: DataArray;
-  signal OUTDOUT: DataArray;
+  signal INDIN, OUTDOUT: DataArray;
+  signal RN: std_logic_vector(63 downto 0);
   signal INPUSH, OUTPOP: ControlArray;
 begin
   uut: ROUTER port map(CLK => CLK, RESET => RESET, INDIN => INDIN, OUTDOUT => OUTDOUT, INPUSH => INPUSH, OUTPOP => OUTPOP);
-  
+  rng: random port map(Clk => Clk, random_number => RN);
   clk_process: process
     begin
       clk <= '0';
@@ -35,30 +39,26 @@ begin
   
   DataIn: process(Clk)
     variable dataInState, dataInNState: state := state0;
-    variable rand_temp : std_logic_vector(M-1 downto 0):=(M-1 downto M-33 => '1', others => '0');
-    variable temp : std_logic := '0';
     variable count: integer := 0;
     begin
       if (RESET = '1') then
         INPUSH <= (others => '0');
+        INDIN <= (others => x"0000000000000000");
+        OUTPOP <= (others => '0');
       else
         dataInState := dataInNState;
       end if;
       
       if(Clk = '1' and Clk'event) then
-        dataInState := DataInNState;
         case dataInState is
         when state0 =>
-          temp := rand_temp(M-1) xor rand_temp(M-2);
-          rand_temp(M-1 downto 1) := rand_temp(M-2 downto 0);
-          rand_temp(0) := temp;
+          INPUSH <= (others => '0');
           dataInNState := state1;
         when state1 =>
-          INDIN(count) <= rand_temp;
-          INPUSH(count) <= '1';
+          INDIN(count) <= RN;
           dataInNState := state2;
         when state2 =>
-          INPUSH <= (others => '0');
+          INPUSH(count) <= '1';
           if count = 3 then
             count := 0;
           else

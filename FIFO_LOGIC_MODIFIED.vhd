@@ -6,8 +6,9 @@ entity FIFO_LOGIC_MODIFIED is
   generic (N: integer := 8);
   port (CLK, PUSH, POP, INIT: in std_logic;
         ADD: out std_logic_vector(N-1 downto 0);
+        we: out std_logic;
         BUFF: buffer std_logic_vector(3 downto 0);
-        FULL, EMPTY, WE, NOPUSH, NOPOP: buffer std_logic);
+        FULL, EMPTY, NOPUSH, NOPOP: buffer std_logic);
 end entity FIFO_LOGIC_MODIFIED;
 
 architecture RTL of FIFO_LOGIC_MODIFIED is

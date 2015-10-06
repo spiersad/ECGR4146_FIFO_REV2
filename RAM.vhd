@@ -1,7 +1,8 @@
 --N x K RAM is 2-dimensional array of N K-bit words
 library IEEE;
 use IEEE.std_logic_1164.all;
-use IEEE.NUMERIC_STD.all;
+use IEEE.std_logic_unsigned.all;
+use IEEE.numeric_std.all;
 
 entity RAM is 
   generic (K: integer:=64;  --number of bits per word
@@ -13,17 +14,17 @@ entity RAM is
     DOUT: out std_logic_vector(K-1 downto 0)); --read data
 end entity RAM;
 architecture RAMBEHAVIOR of RAM is
-  subtype WORD  is std_logic_vector( K-1 downto 0) ;    --define  size  of WORD
-  type MEMORY is array (0 to 2**W-1)  of WORD;--define size of MEMORY 
+  subtype WORD  is std_logic_vector(K-1 downto 0) ;    --define  size  of WORD
+  type MEMORY is array (15 downto 0)  of WORD;--define size of MEMORY 
   signal RAM256: MEMORY := ((others=> (others=>'0')));--define RAM256 as signal of type MEMORY
   begin
-    process (WR,  DIN, ADDR)
-      variable RAM_ADDR_IN: natural range 0 to 2**W-1;--translate address to integer
+    DOUT <= RAM256(TO_INTEGER(UNSIGNED(ADDR)));--always does read operation
+    R: process (WR, DIN, ADDR)
+      --variable RAM_ADDR_IN: integer; --translate address to integer
       begin
-        RAM_ADDR_IN := TO_INTEGER(UNSIGNED(ADDR));--convert address to integer
+        --RAM_ADDR_IN := TO_INTEGER(UNSIGNED(ADDR));--convert address to integer
         if (WR='1') then--write operation to RAM
-          RAM256 (RAM_ADDR_IN) <= DIN ;
+          RAM256 (TO_INTEGER(UNSIGNED(ADDR))) <= DIN ;
         end if;
-        DOUT <= RAM256 (RAM_ADDR_IN);--always does read operation
     end process;
 end architecture RAMBEHAVIOR;
