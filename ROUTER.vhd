@@ -84,18 +84,16 @@ begin
           case current_state is
           when state0 =>
             TMP <= INDOUT(to_integer(unsigned(i)));
+            INPOP(to_integer(unsigned(i))) <= '1';
             next_state <= state1;
           when state1 =>
-            INPOP(to_integer(unsigned(i))) <= '1';
-            next_state <= state2;
-          when state2 =>
             INPOP <= (others => '0');
             if (INNOPOP(to_integer(unsigned(i))) = '1') then
-              next_state <= state4;
-            else
               next_state <= state3;
+            else
+              next_state <= state2;
             end if;
-          when state3 =>
+          when state2 =>
             if (TMP(63 downto 48) >= RTABLE(3)(63 downto 48)) then
               j := 3;
             elsif (TMP(63 downto 48) >= RTABLE(2)(63 downto 48)) then
@@ -105,30 +103,30 @@ begin
             else
               j := 0;
             end if;
-            next_state <= state5;
-          when state4 =>
+            next_state <= state4;
+          when state3 =>
             INPOP <= (others => '0');
             OUTPUSH <= (others => '0');
             i := i + "01";
             next_state <= state0;
-          when state5 =>
+          when state4 =>
             if j >= 1 then
               if (RTABLE(j-1)(63 downto 48) = RTABLE(j)(63 downto 48)) and
                   RTABLE(j-1)(31 downto 16) < RTABLE(j)(31 downto 16) then
                 OUTDIN(j-1) <= TMP;
+                OUTPUSH(J-1) <= '1';
                 j := j-1;
               else
                 OUTDIN(j) <= TMP;
+                OUTPUSH(J) <= '1';
               end if;
             else
-              OUTDIN(j) <= TMP;
+              OUTDIN(0) <= TMP;
+              OUTPUSH(0) <= '1';
             end if;
-            next_state <= state6;
-          when state6 =>
-            OUTPUSH(J) <= '1';
-            next_state <= state4;
+            next_state <= state3;
           when others =>
-            next_state <= state4;
+            next_state <= state3;
           end case;
         end if;
     end process;
