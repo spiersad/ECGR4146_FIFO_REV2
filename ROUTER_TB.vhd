@@ -28,7 +28,6 @@ architecture behav of ROUTER_TB is
   signal INDIN, OUTDOUT: DataArray;
   signal RN: std_logic_vector(63 downto 0);
   signal INPUSH, OUTPOP, OUTNOPOP: ControlArray;
-  signal tmpSignal: std_logic_vector(M-1 downto 0);
   signal counter: integer := 0;
 begin
   uut: ROUTER port map(CLK => CLK, RESET => RESET, INDIN => INDIN, OUTDOUT => OUTDOUT, OUTNOPOP => OUTNOPOP, INPUSH => INPUSH, OUTPOP => OUTPOP);
@@ -56,7 +55,7 @@ begin
         CurrentState := NextState;
       end if;
       
-      if(Clk = '1' and Clk'event and (counter mod 5 = 0)) then
+      if(Clk = '1' and Clk'event and (counter mod 10 = 0)) then
         case CurrentState is
         when state0 =>
           INPUSH <= (others => '0');
@@ -101,7 +100,7 @@ begin
     variable count: Integer;
     variable CurrentState, NextState: State;
     variable temp, totalTemp: Time;
-    --variable tmpSignal: std_logic_vector(M-1 downto 0);
+    variable tmpSignal: std_logic_vector(M-1 downto 0);
     begin
       if (RESET = '1') then
         count := 0;
@@ -110,7 +109,7 @@ begin
         totalTemp := 0 ns;
         CurrentState := state0;
         NextState := state0;
-        tmpSignal <= x"0000000000000000";
+        tmpSignal := x"0000000000000000";
       elsif (clk'event and clk = '1') then
         CurrentState := NextState;
       end if;
@@ -118,13 +117,13 @@ begin
       case CurrentState is
       when state0 =>
         if INPUSH(0)'event then
-          tmpSignal <= INDIN(0);
+          tmpSignal := INDIN(0);
         elsif INPUSH(1)'event then
-          tmpSignal <= INDIN(1);
+          tmpSignal := INDIN(1);
         elsif INPUSH(2)'event then
-          tmpSignal <= INDIN(2);
+          tmpSignal := INDIN(2);
         elsif INPUSH(3)'event then
-          tmpSignal <= INDIN(3);
+          tmpSignal := INDIN(3);
         end if;
         if INPUSH'event then
           NextState := state1;
@@ -152,8 +151,10 @@ begin
   begin
     if reset = '1' then
       OUTPOP <= (others => '0');
-    elsif (CLK = '1' and CLK'event) then
+    elsif (CLK = '1' and CLK'event and (counter mod 1 = 0)) then
       OUTPOP <= (others => '1');
+    --else
+    --  OUTPOP <= (others => '0');
     end if;
   end process;
   
