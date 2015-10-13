@@ -10,6 +10,7 @@ entity ROUTER is
   port (CLK,RESET: in std_logic;
         INDIN: in DataArray;
         OUTDOUT: out DataArray;
+        OUTNOPOP: out ControlArray;
         INPUSH, OUTPOP: in ControlArray);
 end entity ROUTER;
 
@@ -18,9 +19,9 @@ architecture behav of router is
   signal current_state, next_state : state := state0;
   signal RTABLE: DataArray := (x"aaaa000000000000", x"5555000100000000", x"5555001000000000", x"0000001100000000");
   signal OUTDIN, INDOUT: DataArray;
-  signal INPOP, OUTPUSH, INNOPOP, INNOPUSH, OUTNOPUSH, OUTNOPOP, INWE, OUTWE: ControlArray;
+  signal INPOP, OUTPUSH, INNOPOP, INNOPUSH, OUTNOPUSH, INWE, OUTWE: ControlArray;
   signal INADDR, OUTADDR: AddressArray;
-  signal OUTBUFF: BufferArray;
+  signal OUTBUFF, INBUFF: BufferArray;
   signal TMP: std_logic_vector(63 downto 0);
   signal INIT: std_logic;
   
@@ -50,10 +51,10 @@ begin
       port map (DIN => INDIN(I), ADDR => INADDR(I), DOUT => INDOUT(I), WR => INWE(I));
     OUTFIFO: FIFO_LOGIC_MODIFIED generic map (N => N)
       port map(CLK => CLK, PUSH => OUTPUSH(I), POP => OUTPOP(I), INIT => INIT, NOPOP => OUTNOPOP(I),
-               NOPUSH => OUTNOPUSH(I), ADD => OUTADDR(I) , BUFF => OUTBUFF(I), WE => OUTWE(I));
+               NOPUSH => OUTNOPUSH(I), ADD => OUTADDR(I), BUFF => OUTBUFF(I), WE => OUTWE(I));
     INFIFO: FIFO_LOGIC_MODIFIED generic map (N => N)
       port map(CLK => CLK, PUSH => INPUSH(I), POP => INPOP(I), INIT => INIT,
-               NOPUSH => INNOPUSH(I), NOPOP => INNOPOP(I), ADD => INADDR(I), WE => INWE(I));
+               NOPUSH => INNOPUSH(I), NOPOP => INNOPOP(I), ADD => INADDR(I), BUFF => INBUFF(I), WE => INWE(I));
   end generate;
   
   RTABLE(0)(19 downto 16) <= OUTBUFF(0);
@@ -98,7 +99,7 @@ begin
               j := 3;
             elsif (TMP(63 downto 48) >= RTABLE(2)(63 downto 48)) then
               j := 2;
-            elsif (TMP(63 downto 48) >= RTABLE(2)(63 downto 48)) then
+            elsif (TMP(63 downto 48) >= RTABLE(1)(63 downto 48)) then
               j := 1;
             else
               j := 0;

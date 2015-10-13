@@ -28,8 +28,8 @@ architecture RTL of FIFO_LOGIC_MODIFIED is
           else
             RPTR <= RPTR + 1;
           end if;
-          LASTOP <= '0';
           BUFF <= BUFF - "0001";
+          LASTOP <= '0';
         elsif (PUSH = '1' and FULL = '0') then -- push --
           if WPTR = "00001111" then
             WPTR <= "00000000";

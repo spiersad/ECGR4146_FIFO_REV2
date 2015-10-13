@@ -24,18 +24,16 @@ architecture RTL of FIFO_LOGIC_MODIFIED is
           BUFF <= "0000";
         elsif (POP = '1' and empty = '0') then -- pop --
           if RPTR = "00001111" then 
-            RPTR <= "00000000"
-          else
-            RPTR <= RPTR + 1;
+            RPTR <= "00000000";
           end if;
-          LASTOP <= '0';
+          RPTR <= RPTR + 1;
           BUFF <= BUFF - "0001";
+          LASTOP <= '0';
         elsif (PUSH = '1' and FULL = '0') then -- push --
           if WPTR = "00001111" then
-            WPTR <= "00000000"
-          else
-            WPTR <= WPTR + 1;
+            WPTR <= "00000000";
           end if;
+          WPTR <= WPTR + 1;
           LASTOP <= '1';
           BUFF <= BUFF + "0001";
         end if; -- otherwise all Fs hold their value --
